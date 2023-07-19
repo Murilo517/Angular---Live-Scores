@@ -1,0 +1,23 @@
+.divButtons {
+  display: flex;
+  flex-direction: column;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+a:hover {
+  color: black;
+}
+
+@media (min-width: 768px) {
+  .divButtons {
+    gap: 10px;
+    flex-direction: row;
+  }
+}
