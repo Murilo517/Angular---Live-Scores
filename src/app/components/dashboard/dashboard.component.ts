@@ -1,21 +1,20 @@
-import { Component , OnInit} from '@angular/core';
-import { MatchService } from 'src/app/services/match.service';
+import { Component, OnInit } from "@angular/core";
+import { Imatch } from "src/app/interfaces/matches.interfaces";
+import { MatchService } from "src/app/services/match.service";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: "app-dashboard",
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.scss"],
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent implements OnInit {
+  constructor(private matchService: MatchService) {}
 
-  constructor(private matchService: MatchService){
-
-  }
+  matches : Imatch[] = [];
 
   ngOnInit(): void {
-    this.matchService.getMatches().subscribe(resp => {
-      console.log(resp);   
-    })
+    this.matchService.getMatches().subscribe((newMatches) => {
+      this.matches = newMatches;
+    });
   }
-
 }

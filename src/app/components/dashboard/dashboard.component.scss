@@ -1,0 +1,30 @@
+ul {
+   display: flex;
+   flex-direction: column;
+   overflow-x: hidden;
+   gap: 10px;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+  }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 20%;   
+    min-width: 200px;
+    border: 1px solid red;
+    padding: 10px;
+
+  @media (min-width: 768px) {
+    
+    button {
+      max-width: 50%;
+    }
+  }
+}
