@@ -2,6 +2,6 @@
     <li class="card" *ngFor="let match of matches">
         <h2>{{match.league_name}}</h2>
         <p> {{match.radiant_name}} X {{match.dire_name}}</p>
-        <button>Match Page</button>
+        <button (click)="selectedMatch(match.match_id)">Match Page</button>
     </li>
 </ul>

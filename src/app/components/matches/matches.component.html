@@ -1,1 +1,8 @@
-<p>matches works!</p>
+<h1>Match Details</h1>
+<div *ngIf="matchDetails">
+  <h2>Match ID: {{ matchDetails.match_id }}</h2>
+  <p>Radiant Team: {{ matchDetails.radiant_team.name }}</p>
+  <p>Dire Team: {{ matchDetails.dire_team.name }}</p>
+  <p>Radiant Score: {{ matchDetails.radiant_score }}</p>
+  <p>Dire Score: {{ matchDetails.dire_score }}</p>
+</div>

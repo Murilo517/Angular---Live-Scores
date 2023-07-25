@@ -15,5 +15,9 @@ export class MatchService {
   getMatches(): Observable<Imatch[]>{
     return this.http.get<Imatch[]>(`${this.baseURL}/proMatches`)
   }
+
+  getMatchById(matchId:string): Observable<any>{
+    return this.http.get(`${this.baseURL}/matches/${matchId}`)
+  }
   
 }

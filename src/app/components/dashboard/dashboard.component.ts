@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { Imatch } from "src/app/interfaces/matches.interfaces";
 import { MatchService } from "src/app/services/match.service";
 
@@ -8,7 +9,7 @@ import { MatchService } from "src/app/services/match.service";
   styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private matchService: MatchService) {}
+  constructor(private matchService: MatchService, private router:Router) {}
 
   matches : Imatch[] = [];
 
@@ -16,5 +17,9 @@ export class DashboardComponent implements OnInit {
     this.matchService.getMatches().subscribe((newMatches) => {
       this.matches = newMatches;
     });
+  }
+
+  selectedMatch(matchId:string){
+    this.router.navigate(['','matches',matchId])
   }
 }
