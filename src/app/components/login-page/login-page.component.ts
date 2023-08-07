@@ -1,25 +1,40 @@
-import { Component } from '@angular/core';
-import { MyApiService } from 'src/app/services/my-api.service';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
+import { MyApiService } from "src/app/services/my-api.service";
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  selector: "app-login-page",
+  templateUrl: "./login-page.component.html",
+  styleUrls: ["./login-page.component.scss"],
 })
-export class LoginPageComponent {
-   
-  constructor(private apiService:MyApiService){}
+export class LoginPageComponent implements OnInit {
+  constructor(
+    private apiService: MyApiService,
+    private activatedRoute: ActivatedRoute,
+    private formBuilder: FormBuilder
+  ) {}
 
-  user:string = ''
-  password: string = ''
+  formLogin!: FormGroup;
 
-  
-  login(){
-    const loginData = {
-      user : this.user,
-      password : this.password
-    }
-    this.apiService.makelogin(loginData)
+  ngOnInit() {
+    this.createForm();
   }
-  
+
+  createForm() {
+    this.formLogin = this.formBuilder.group({
+      user: ['',Validators.required],
+      password: ['',Validators.required],
+    });
+  }
+
+  login() {
+    if (this.formLogin.valid) {
+      const loginData = {
+        user: this.formLogin.value.user,
+        password: this.formLogin.value.password,
+      };
+      this.apiService.makelogin(loginData);
+    }
+  }
 }

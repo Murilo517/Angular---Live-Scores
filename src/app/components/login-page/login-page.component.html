@@ -1,9 +1,9 @@
-<div class="divForm">
+<div class="divForm" [formGroup]="formLogin">
     <form>
         <label for="user">User</label>
-        <input type="text" name="user" placeholder="Insert your username" [(ngModel)]="user" [ngModelOptions]='{standalone:true}'>
+        <input type="text" name="user" placeholder="Insert your username" formControlName='user'>
         <label for="password">Password</label>
-        <input type="password" placeholder="Insert your password" [(ngModel)]="password" [ngModelOptions]='{standalone:true}'>
-        <button (click)="login()">Login</button>
+        <input type="password" placeholder="Insert your password" formControlName='password'>
+        <button (click)="login()"  [disabled]="!formLogin.valid">Login</button>
     </form>
 </div>
